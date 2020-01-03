@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="thumbnail">
+	<p>{{ title }}</p>
+      <a href="{{ url }}">
+        <img src="{{ url }}" alt="Lights" style="width:100%">
+        <div class="caption">
+          <p>{{ expl }}</p>
+        </div>
+        <button class="btn btn-outline-info"><a href="download/{{ date }}.pdf">Download as pdf</a></button>
+      </a>
+    </div>
+{% endblock content %}
