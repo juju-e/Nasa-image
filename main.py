@@ -11,27 +11,28 @@ def main():
  form=enter()               # the form's elements
  if form.validate_on_submit():    # if the user submits the form
   res=requests.get("https://api.nasa.gov/planetary/apod?api_key=HN4KWsQZxq6LKTKTh47n6V48A3BrglSYHXO78Un6&date="+str(form.entry.data)).json()
-  if res['code']:   # if there is an error 
+  if 'code' in res:   # if there is an error 
         return render_template('404.html',msg=res['msg'])   # display the 404 page
-  image_url=res['url']           # else ....
-  date=res['date']                          # the date
-  if os.path.exists(str(date)+'.jpg'):        ######
+  else:
+   image_url=res['url']           # else .... get the url and...
+   date=res['date']                          # the date
+   if os.path.exists(str(date)+'.jpg'):        ######
       os.remove(str(date)+'.jpg')             #  Delete if these files exist
-  if os.path.exists(str(date)+'.pdf'):        # 
+   if os.path.exists(str(date)+'.pdf'):        # 
       os.remove(str(date)+'.pdf')             ######
-  response = requests.get(image_url, stream=True)   #
-  if response.status_code == 200:                   #
+   response = requests.get(image_url, stream=True)   #
+   if response.status_code == 200:                   #
     with open(str(date)+".jpg", 'wb') as f:         # Download the image and save it with the time index method( as explained in the readme)
         f.write(response.content)                   #
-  explanation=res['explanation']            #         
-  title=res['title']                        #  Getting the info 
-  preview=render_template('preview.html',url=image_url,expl=explanation,title=title,form=form,date=date) # creating a preview file which will be later converted to pdf
-  preview_file=open(str(date)+'.html','w')  #
-  preview_file.write(preview)               # Saving the preview file as a html file
-  preview_file.close()                      #
-  pdfkit.from_file(str(date)+'.html',str(date)+'.pdf')   # converting to pdf
-  return preview                   
- return render_template('index.html',form=form)
+   explanation=res['explanation']            #         
+   title=res['title']                        #  Getting the info 
+   preview=render_template('preview.html',url=image_url,expl=explanation,title=title,form=form,date=date) # creating a preview file which will be later converted to pdf
+   preview_file=open(str(date)+'.html','w')  #
+   preview_file.write(preview)               # Saving the preview file as a html file
+   preview_file.close()                      #
+   pdfkit.from_file(str(date)+'.html',str(date)+'.pdf')   # converting to pdf
+   return preview                   
+  return render_template('index.html',form=form)
 @app.route('/download/<files>')
 def download(files):
    return send_file(files)  # return the file if requested
