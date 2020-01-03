@@ -12,7 +12,7 @@ $ pip install -r requirements.txt
 ```
 To run this app type: ` python3 main.py ` The server will be running on localhost port 7080
 
-#### In this introductory readme, i'm going tp explain the steps i took to make this web app.
+#### In this introductory readme, i'm going to explain the steps i took to make this web app.
 #### First i registered to [https://api.nasa.gov/](https://api.nasa.gov/) and got a key, this certainly was the easyest part of this task, I immediately started to make a responsive and sympatic frontend for the web app, which also proved to be pretty easy.
 #### I Then started working on the backend, This one was a very, very hard thing i did. I faced 2 major issues:
 ####   - I Struggled for a whole day almost without sleeping to find a way to convert the file to pdf
