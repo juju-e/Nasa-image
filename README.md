@@ -6,6 +6,10 @@ This wab app depends on wkhtmltopdf, to install it just type:
 $ sudo apt install wkhtmltopdf
 
 ```
+or if you are using a red-hat based distro
+```
+$ sudo dnf install wkhtmltopdf
+```
 To install the needed pip packeges be sure to be in the folder in which you installed this web app and run:
 ```
 $ pip install -r requirements.txt
