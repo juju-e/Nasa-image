@@ -1,6 +1,6 @@
 # Nasa-image
 A flask web app that fetchs nasa's Astronomy Picture of the day and displays it, it has a download as pdf option
-This wab app depends on wkhtmltopdf, to install it just type:
+This web app depends on wkhtmltopdf, to install it just type:
 ```
 
 $ sudo apt install wkhtmltopdf
