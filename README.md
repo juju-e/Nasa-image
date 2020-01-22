@@ -1,15 +1,5 @@
 # Nasa-image
 A flask web app that fetchs nasa's Astronomy Picture of the day and displays it, it has a download as pdf option
-This web app depends on wkhtmltopdf, to install it just type:
-```
-
-$ sudo apt install wkhtmltopdf
-
-```
-or if you are using a red-hat based distro
-```
-$ sudo dnf install wkhtmltopdf
-```
 To install the needed pip packeges be sure to be in the folder in which you installed this web app and run:
 ```
 $ pip install -r requirements.txt
@@ -24,7 +14,7 @@ To run this app type: ` python3 main.py ` The server will be running on localhos
 
 #### Thanks god i also finally found 2 solutions to the 2 enumerated problems:
 
-### 1.Pdfkit:
+### 1.Weasyprint:
 
 #### I used this simple python module to convert the obtained html file(after the user gives the date) into a pdf file,but the problem still lied on how to index them, that's where solution 2 enter's the game
 ### 2.Index by date:
