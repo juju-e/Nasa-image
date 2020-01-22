@@ -1,30 +1,32 @@
 # Nasa-image
-A flask web app that fetchs nasa's Astronomy Picture of the day and displays it, it has a download as pdf option
-To install the needed pip packeges be sure to be in the folder in which you installed this web app and run:
+A flask web app that fetchs nasa's Astronomy Picture of the day and displays it, it has a download as pdf option<br>
+To install the needed pip packeges be sure to be in the folder in which you installed this web app and run:<br>
 ```
 $ pip install -r requirements.txt
 ```
-To run this app type: ` python3 main.py ` The server will be running on localhost port 7080
+To run this app type: ` python3 main.py ` The server will be running on localhost port 7080<br>
 
-#### In this introductory readme, i'm going to explain the steps i took to make this web app.
-#### First i registered to [https://api.nasa.gov/](https://api.nasa.gov/) and got a key, this certainly was the easyest part of this task, I immediately started to make a responsive and sympatic frontend for the web app, which also proved to be pretty easy.
-#### I Then started working on the backend, This one was a very, very hard thing i did. I faced 2 major issues:
-####   - I Struggled for a whole day almost without sleeping to find a way to convert the file to pdf
-####   - I also struggled on how the server will know which pdf to download
+In this introductory readme, i'm going to explain the steps i took to make this web app.<br>
+First i registered to [https://api.nasa.gov/](https://api.nasa.gov/) and got a key, this certainly was the easyest part of this task, I immediately started to make a responsive and sympatic frontend for the web app, which also proved to be pretty easy.<br>
+I Then started working on the backend, This one was a very, very hard thing i did. I faced 2 major issues:<br>
+  - I Struggled for a whole day almost without sleeping to find a way to convert the file to pdf<br>
+  - I also struggled on how the server will know which pdf to download<br>
 
-#### Thanks god i also finally found 2 solutions to the 2 enumerated problems:
+Thanks god i also finally found 2 solutions to the 2 enumerated problems:<br>
 
 ### 1.Weasyprint:
 
-#### I used this simple python module to convert the obtained html file(after the user gives the date) into a pdf file,but the problem still lied on how to index them, that's where solution 2 enter's the game
+I used this simple python module to convert the obtained html file(after the user gives the date) into a pdf file,but the problem still lied on how to index them, that's where solution 2 enter's the game<br>
 ### 2.Index by date:
-#### For the server to know which file(image, html, pdf) it was working on, i first though of creating a single name('img') and add .txt .html and .pdf extensions and after the user used the file, they would automatically be deleted.
+For the server to know which file(image, html, pdf) it was working on, i first though of creating a single name('img') and add .txt .html and .pdf extensions and after the user used the file, they would automatically be deleted.
 <br>
 
-#### But this made me loose at least 6 hours of debugging, 'cause OMG this method was so much buggy and sloppy that it almost made me abbandon the task, but later on i found an article on how some websites index their files, that they associate each file with a unix timestamp of when the file was uploaded,
+But this made me loose at least 6 hours of debugging, 'cause OMG this method was so much buggy and sloppy that it almost made me abbandon the task, but later on i found an article on how some websites index their files, that they associate each file with a unix timestamp of when the file was uploaded,
 <br>
 
-#### I got back to work and used the same method but in place of using an unique unix timestamp for each file, i simply associated a file(pdf,jpg,html) with the date at which it was uploaded on [api.nasa.gov/](https://api.nasa.gov/) which by the way is unique for every image.
+I got back to work and used the same method but in place of using an unique unix timestamp for each file, i simply associated a file(pdf,jpg,html) with the date at which it was uploaded on [api.nasa.gov/](https://api.nasa.gov/) which by the way is unique for every image.
 <br>
-
-#### It then became pretty easy to know which html file was to be transformed into a pdf, which jpg i was gonna display and which pdf the user is gonna download.
+It then became pretty easy to know which html file was to be transformed into a pdf, which jpg i was gonna display and which pdf the user is gonna download.
+# How did i deploy to heroku?
+I followed [this](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-the-heroku-cloud-legacy) great tutorial by Miguel Grinberg and also used some other online ressources.
+[this](https://still-lowlands-24100.herokuapp.com/) is the link to the heroku hosted app.
