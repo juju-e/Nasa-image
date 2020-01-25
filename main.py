@@ -11,7 +11,7 @@ def main():
  global date
  form=enter()          # the form's elements
  if form.validate_on_submit():     # if the user submits the form
-  res=requests.get("https://api.nasa.gov/planetary/apod?api_key=HN4KWsQZxq6LKTKTh47n6V48A3BrglSYHXO78Un6&date="+str(form.entry.data)).json()
+  res=requests.get("https://api.nasa.gov/planetary/apod?api_key=<your_key>&date="+str(form.entry.data)).json()
   if 'code' in res:     # if there is an error 
         return render_template('404.html',msg=res['msg'])    # display the 404 page
   image_url=res['url']         # else .... get the url and...
